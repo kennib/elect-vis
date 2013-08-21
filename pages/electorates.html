@@ -1,6 +1,6 @@
-<h1>List of Australian Electorates for {{ year }}</h1>
+<h1>List of Australian Electorates</h1>
 <ul>
 	<li ng-repeat="electorate in electorates|orderBy:'name'">
-		<a ng-href="#/{{year}}/electorate/{{electorate.name}}">{{ electorate.name }}</a>
+		<a ng-href="#/electorate/{{electorate.name}}">{{ electorate.name }}</a>
 	</li>
 </ul>
