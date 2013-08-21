@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="elect-vis">
 	<head>
 		<title>Federal Election Visualisations</title>
 
@@ -9,9 +9,11 @@
 
 		<!-- JS Libraries -->
 		<script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+		<!-- elect-vis JS -->
+		<script type="text/javascript" src="js/elect-vis.js"></script>
 	</head>
 	<body>
-		
+		<section ng-view></section>
 	</body>
 </html>
