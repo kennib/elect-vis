@@ -18,11 +18,14 @@ function electorateCtrl($scope, $routeParams,
                         electorates) {
 	$scope.electorates = electorates;
 	
-	var electorateName = $routeParams.electorate;
-	if (electorateName) electorateName = electorateName.capitalize();
+	if ($routeParams.electorate)
+		$scope.electorateName = $routeParams.electorate;
+	else
+		$scope.electorateName = '';
+	$scope.electorateName = $scope.electorateName.capitalize();
 	// Watch for async electorates
 	$scope.$watch('electorates', function(electorates) {
 		if (electorates)
-			$scope.electorate = electorates[electorateName];
+			$scope.electorate = electorates[$scope.electorateName];
 	});
 }

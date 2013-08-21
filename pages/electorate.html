@@ -1,2 +1,7 @@
-<h1>{{ electorate.name }} - {{electorate.state}}</h1>
-<p>Statistics and visualisations</p>
+<h1 ng-show="electorate">{{ electorate.name }} - {{electorate.state}}</h1>
+<p ng-show="electorate">Statistics and visualisations</p>
+
+<p ng-hide="electorate">Could not find an electorate called "{{ electorateName }}"</p>
+<p ng-hide="electorate">Did you mean one of the following electorates?</p>
+<ng-include src="'pages/electorates.html'">
+</ng-include>
