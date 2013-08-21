@@ -1,0 +1,752 @@
+{
+  "Adelaide": {
+    "id":179,
+    "name":"Adelaide",
+    "state":"SA"
+  },
+  "Aston": {
+    "id":197,
+    "name":"Aston",
+    "state":"VIC"
+  },
+  "Ballarat": {
+    "id":198,
+    "name":"Ballarat",
+    "state":"VIC"
+  },
+  "Banks": {
+    "id":103,
+    "name":"Banks",
+    "state":"NSW"
+  },
+  "Barker": {
+    "id":180,
+    "name":"Barker",
+    "state":"SA"
+  },
+  "Barton": {
+    "id":104,
+    "name":"Barton",
+    "state":"NSW"
+  },
+  "Bass": {
+    "id":192,
+    "name":"Bass",
+    "state":"TAS"
+  },
+  "Batman": {
+    "id":199,
+    "name":"Batman",
+    "state":"VIC"
+  },
+  "Bendigo": {
+    "id":200,
+    "name":"Bendigo",
+    "state":"VIC"
+  },
+  "Bennelong": {
+    "id":105,
+    "name":"Bennelong",
+    "state":"NSW"
+  },
+  "Berowra": {
+    "id":106,
+    "name":"Berowra",
+    "state":"NSW"
+  },
+  "Blair": {
+    "id":304,
+    "name":"Blair",
+    "state":"QLD"
+  },
+  "Blaxland": {
+    "id":107,
+    "name":"Blaxland",
+    "state":"NSW"
+  },
+  "Bonner": {
+    "id":310,
+    "name":"Bonner",
+    "state":"QLD"
+  },
+  "Boothby": {
+    "id":182,
+    "name":"Boothby",
+    "state":"SA"
+  },
+  "Bowman": {
+    "id":155,
+    "name":"Bowman",
+    "state":"QLD"
+  },
+  "Braddon": {
+    "id":193,
+    "name":"Braddon",
+    "state":"TAS"
+  },
+  "Bradfield": {
+    "id":108,
+    "name":"Bradfield",
+    "state":"NSW"
+  },
+  "Brand": {
+    "id":235,
+    "name":"Brand",
+    "state":"WA"
+  },
+  "Brisbane": {
+    "id":156,
+    "name":"Brisbane",
+    "state":"QLD"
+  },
+  "Bruce": {
+    "id":201,
+    "name":"Bruce",
+    "state":"VIC"
+  },
+  "Calare": {
+    "id":109,
+    "name":"Calare",
+    "state":"NSW"
+  },
+  "Calwell": {
+    "id":203,
+    "name":"Calwell",
+    "state":"VIC"
+  },
+  "Canberra": {
+    "id":101,
+    "name":"Canberra",
+    "state":"ACT"
+  },
+  "Canning": {
+    "id":236,
+    "name":"Canning",
+    "state":"WA"
+  },
+  "Capricornia": {
+    "id":157,
+    "name":"Capricornia",
+    "state":"QLD"
+  },
+  "Casey": {
+    "id":204,
+    "name":"Casey",
+    "state":"VIC"
+  },
+  "Charlton": {
+    "id":110,
+    "name":"Charlton",
+    "state":"NSW"
+  },
+  "Chifley": {
+    "id":111,
+    "name":"Chifley",
+    "state":"NSW"
+  },
+  "Chisholm": {
+    "id":205,
+    "name":"Chisholm",
+    "state":"VIC"
+  },
+  "Cook": {
+    "id":112,
+    "name":"Cook",
+    "state":"NSW"
+  },
+  "Corangamite": {
+    "id":207,
+    "name":"Corangamite",
+    "state":"VIC"
+  },
+  "Corio": {
+    "id":208,
+    "name":"Corio",
+    "state":"VIC"
+  },
+  "Cowan": {
+    "id":237,
+    "name":"Cowan",
+    "state":"WA"
+  },
+  "Cowper": {
+    "id":113,
+    "name":"Cowper",
+    "state":"NSW"
+  },
+  "Cunningham": {
+    "id":114,
+    "name":"Cunningham",
+    "state":"NSW"
+  },
+  "Curtin": {
+    "id":238,
+    "name":"Curtin",
+    "state":"WA"
+  },
+  "Dawson": {
+    "id":158,
+    "name":"Dawson",
+    "state":"QLD"
+  },
+  "Deakin": {
+    "id":209,
+    "name":"Deakin",
+    "state":"VIC"
+  },
+  "Denison": {
+    "id":194,
+    "name":"Denison",
+    "state":"TAS"
+  },
+  "Dickson": {
+    "id":252,
+    "name":"Dickson",
+    "state":"QLD"
+  },
+  "Dobell": {
+    "id":115,
+    "name":"Dobell",
+    "state":"NSW"
+  },
+  "Dunkley": {
+    "id":210,
+    "name":"Dunkley",
+    "state":"VIC"
+  },
+  "Durack": {
+    "id":312,
+    "name":"Durack",
+    "state":"WA"
+  },
+  "Eden-Monaro": {
+    "id":117,
+    "name":"Eden-Monaro",
+    "state":"NSW"
+  },
+  "Fadden": {
+    "id":159,
+    "name":"Fadden",
+    "state":"QLD"
+  },
+  "Fairfax": {
+    "id":160,
+    "name":"Fairfax",
+    "state":"QLD"
+  },
+  "Farrer": {
+    "id":118,
+    "name":"Farrer",
+    "state":"NSW"
+  },
+  "Fisher": {
+    "id":161,
+    "name":"Fisher",
+    "state":"QLD"
+  },
+  "Flinders": {
+    "id":211,
+    "name":"Flinders",
+    "state":"VIC"
+  },
+  "Flynn": {
+    "id":311,
+    "name":"Flynn",
+    "state":"QLD"
+  },
+  "Forde": {
+    "id":162,
+    "name":"Forde",
+    "state":"QLD"
+  },
+  "Forrest": {
+    "id":239,
+    "name":"Forrest",
+    "state":"WA"
+  },
+  "Fowler": {
+    "id":119,
+    "name":"Fowler",
+    "state":"NSW"
+  },
+  "Franklin": {
+    "id":195,
+    "name":"Franklin",
+    "state":"TAS"
+  },
+  "Fraser": {
+    "id":102,
+    "name":"Fraser",
+    "state":"ACT"
+  },
+  "Fremantle": {
+    "id":240,
+    "name":"Fremantle",
+    "state":"WA"
+  },
+  "Gellibrand": {
+    "id":212,
+    "name":"Gellibrand",
+    "state":"VIC"
+  },
+  "Gilmore": {
+    "id":120,
+    "name":"Gilmore",
+    "state":"NSW"
+  },
+  "Gippsland": {
+    "id":213,
+    "name":"Gippsland",
+    "state":"VIC"
+  },
+  "Goldstein": {
+    "id":214,
+    "name":"Goldstein",
+    "state":"VIC"
+  },
+  "Gorton": {
+    "id":309,
+    "name":"Gorton",
+    "state":"VIC"
+  },
+  "Grayndler": {
+    "id":121,
+    "name":"Grayndler",
+    "state":"NSW"
+  },
+  "Greenway": {
+    "id":122,
+    "name":"Greenway",
+    "state":"NSW"
+  },
+  "Grey": {
+    "id":183,
+    "name":"Grey",
+    "state":"SA"
+  },
+  "Griffith": {
+    "id":163,
+    "name":"Griffith",
+    "state":"QLD"
+  },
+  "Groom": {
+    "id":164,
+    "name":"Groom",
+    "state":"QLD"
+  },
+  "Hasluck": {
+    "id":305,
+    "name":"Hasluck",
+    "state":"WA"
+  },
+  "Herbert": {
+    "id":165,
+    "name":"Herbert",
+    "state":"QLD"
+  },
+  "Higgins": {
+    "id":215,
+    "name":"Higgins",
+    "state":"VIC"
+  },
+  "Hindmarsh": {
+    "id":185,
+    "name":"Hindmarsh",
+    "state":"SA"
+  },
+  "Hinkler": {
+    "id":166,
+    "name":"Hinkler",
+    "state":"QLD"
+  },
+  "Holt": {
+    "id":216,
+    "name":"Holt",
+    "state":"VIC"
+  },
+  "Hotham": {
+    "id":217,
+    "name":"Hotham",
+    "state":"VIC"
+  },
+  "Hughes": {
+    "id":124,
+    "name":"Hughes",
+    "state":"NSW"
+  },
+  "Hume": {
+    "id":125,
+    "name":"Hume",
+    "state":"NSW"
+  },
+  "Hunter": {
+    "id":126,
+    "name":"Hunter",
+    "state":"NSW"
+  },
+  "Indi": {
+    "id":218,
+    "name":"Indi",
+    "state":"VIC"
+  },
+  "Isaacs": {
+    "id":219,
+    "name":"Isaacs",
+    "state":"VIC"
+  },
+  "Jagajaga": {
+    "id":220,
+    "name":"Jagajaga",
+    "state":"VIC"
+  },
+  "Kennedy": {
+    "id":167,
+    "name":"Kennedy",
+    "state":"QLD"
+  },
+  "Kingsford Smith": {
+    "id":127,
+    "name":"Kingsford Smith",
+    "state":"NSW"
+  },
+  "Kingston": {
+    "id":186,
+    "name":"Kingston",
+    "state":"SA"
+  },
+  "Kooyong": {
+    "id":221,
+    "name":"Kooyong",
+    "state":"VIC"
+  },
+  "La Trobe": {
+    "id":223,
+    "name":"La Trobe",
+    "state":"VIC"
+  },
+  "Lalor": {
+    "id":222,
+    "name":"Lalor",
+    "state":"VIC"
+  },
+  "Leichhardt": {
+    "id":168,
+    "name":"Leichhardt",
+    "state":"QLD"
+  },
+  "Lilley": {
+    "id":169,
+    "name":"Lilley",
+    "state":"QLD"
+  },
+  "Lindsay": {
+    "id":128,
+    "name":"Lindsay",
+    "state":"NSW"
+  },
+  "Lingiari": {
+    "id":306,
+    "name":"Lingiari",
+    "state":"NT"
+  },
+  "Longman": {
+    "id":302,
+    "name":"Longman",
+    "state":"QLD"
+  },
+  "Lyne": {
+    "id":130,
+    "name":"Lyne",
+    "state":"NSW"
+  },
+  "Lyons": {
+    "id":196,
+    "name":"Lyons",
+    "state":"TAS"
+  },
+  "Macarthur": {
+    "id":131,
+    "name":"Macarthur",
+    "state":"NSW"
+  },
+  "Mackellar": {
+    "id":132,
+    "name":"Mackellar",
+    "state":"NSW"
+  },
+  "Macquarie": {
+    "id":133,
+    "name":"Macquarie",
+    "state":"NSW"
+  },
+  "Makin": {
+    "id":187,
+    "name":"Makin",
+    "state":"SA"
+  },
+  "Mallee": {
+    "id":224,
+    "name":"Mallee",
+    "state":"VIC"
+  },
+  "Maranoa": {
+    "id":170,
+    "name":"Maranoa",
+    "state":"QLD"
+  },
+  "Maribyrnong": {
+    "id":225,
+    "name":"Maribyrnong",
+    "state":"VIC"
+  },
+  "Mayo": {
+    "id":188,
+    "name":"Mayo",
+    "state":"SA"
+  },
+  "McEwen": {
+    "id":226,
+    "name":"McEwen",
+    "state":"VIC"
+  },
+  "McMahon": {
+    "id":315,
+    "name":"McMahon",
+    "state":"NSW"
+  },
+  "McMillan": {
+    "id":227,
+    "name":"McMillan",
+    "state":"VIC"
+  },
+  "McPherson": {
+    "id":171,
+    "name":"McPherson",
+    "state":"QLD"
+  },
+  "Melbourne": {
+    "id":228,
+    "name":"Melbourne",
+    "state":"VIC"
+  },
+  "Melbourne Ports": {
+    "id":230,
+    "name":"Melbourne Ports",
+    "state":"VIC"
+  },
+  "Menzies": {
+    "id":229,
+    "name":"Menzies",
+    "state":"VIC"
+  },
+  "Mitchell": {
+    "id":134,
+    "name":"Mitchell",
+    "state":"NSW"
+  },
+  "Moncrieff": {
+    "id":172,
+    "name":"Moncrieff",
+    "state":"QLD"
+  },
+  "Moore": {
+    "id":242,
+    "name":"Moore",
+    "state":"WA"
+  },
+  "Moreton": {
+    "id":173,
+    "name":"Moreton",
+    "state":"QLD"
+  },
+  "Murray": {
+    "id":231,
+    "name":"Murray",
+    "state":"VIC"
+  },
+  "New England": {
+    "id":135,
+    "name":"New England",
+    "state":"NSW"
+  },
+  "Newcastle": {
+    "id":136,
+    "name":"Newcastle",
+    "state":"NSW"
+  },
+  "North Sydney": {
+    "id":137,
+    "name":"North Sydney",
+    "state":"NSW"
+  },
+  "O'Connor": {
+    "id":243,
+    "name":"O'Connor",
+    "state":"WA"
+  },
+  "Oxley": {
+    "id":174,
+    "name":"Oxley",
+    "state":"QLD"
+  },
+  "Page": {
+    "id":138,
+    "name":"Page",
+    "state":"NSW"
+  },
+  "Parkes": {
+    "id":139,
+    "name":"Parkes",
+    "state":"NSW"
+  },
+  "Parramatta": {
+    "id":140,
+    "name":"Parramatta",
+    "state":"NSW"
+  },
+  "Paterson": {
+    "id":249,
+    "name":"Paterson",
+    "state":"NSW"
+  },
+  "Pearce": {
+    "id":244,
+    "name":"Pearce",
+    "state":"WA"
+  },
+  "Perth": {
+    "id":245,
+    "name":"Perth",
+    "state":"WA"
+  },
+  "Petrie": {
+    "id":175,
+    "name":"Petrie",
+    "state":"QLD"
+  },
+  "Port Adelaide": {
+    "id":189,
+    "name":"Port Adelaide",
+    "state":"SA"
+  },
+  "Rankin": {
+    "id":176,
+    "name":"Rankin",
+    "state":"QLD"
+  },
+  "Reid": {
+    "id":144,
+    "name":"Reid",
+    "state":"NSW"
+  },
+  "Richmond": {
+    "id":145,
+    "name":"Richmond",
+    "state":"NSW"
+  },
+  "Riverina": {
+    "id":250,
+    "name":"Riverina",
+    "state":"NSW"
+  },
+  "Robertson": {
+    "id":146,
+    "name":"Robertson",
+    "state":"NSW"
+  },
+  "Ryan": {
+    "id":177,
+    "name":"Ryan",
+    "state":"QLD"
+  },
+  "Scullin": {
+    "id":232,
+    "name":"Scullin",
+    "state":"VIC"
+  },
+  "Shortland": {
+    "id":148,
+    "name":"Shortland",
+    "state":"NSW"
+  },
+  "Solomon": {
+    "id":307,
+    "name":"Solomon",
+    "state":"NT"
+  },
+  "Stirling": {
+    "id":246,
+    "name":"Stirling",
+    "state":"WA"
+  },
+  "Sturt": {
+    "id":190,
+    "name":"Sturt",
+    "state":"SA"
+  },
+  "Swan": {
+    "id":247,
+    "name":"Swan",
+    "state":"WA"
+  },
+  "Sydney": {
+    "id":149,
+    "name":"Sydney",
+    "state":"NSW"
+  },
+  "Tangney": {
+    "id":248,
+    "name":"Tangney",
+    "state":"WA"
+  },
+  "Throsby": {
+    "id":150,
+    "name":"Throsby",
+    "state":"NSW"
+  },
+  "Wakefield": {
+    "id":191,
+    "name":"Wakefield",
+    "state":"SA"
+  },
+  "Wannon": {
+    "id":233,
+    "name":"Wannon",
+    "state":"VIC"
+  },
+  "Warringah": {
+    "id":151,
+    "name":"Warringah",
+    "state":"NSW"
+  },
+  "Watson": {
+    "id":251,
+    "name":"Watson",
+    "state":"NSW"
+  },
+  "Wentworth": {
+    "id":152,
+    "name":"Wentworth",
+    "state":"NSW"
+  },
+  "Werriwa": {
+    "id":153,
+    "name":"Werriwa",
+    "state":"NSW"
+  },
+  "Wide Bay": {
+    "id":178,
+    "name":"Wide Bay",
+    "state":"QLD"
+  },
+  "Wills": {
+    "id":234,
+    "name":"Wills",
+    "state":"VIC"
+  },
+  "Wright": {
+    "id":316,
+    "name":"Wright",
+    "state":"QLD"
+  }
+}

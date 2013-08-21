@@ -1,0 +1,6 @@
+<h1>List of Australian Electorates for {{ year }}</h1>
+<ul>
+	<li ng-repeat="electorate in electorates|orderBy:'name'">
+		{{ electorate.name }}
+	</li>
+</ul>
