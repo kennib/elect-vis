@@ -1,5 +1,5 @@
 <h1>List of Australian Electorates</h1>
-<ul>
+<ul class="six-cols">
 	<li ng-repeat="electorate in electorates|orderBy:'name'">
 		<a ng-href="#/electorate/{{electorate.name}}">{{ electorate.name }}</a>
 	</li>

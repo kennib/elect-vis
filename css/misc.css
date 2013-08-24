@@ -1,0 +1,5 @@
+.six-cols {
+	-moz-column-count: 6; /* Firefox */
+	-webkit-column-count: 6; /* Safari and Chrome */
+	column-count: 6;
+}
