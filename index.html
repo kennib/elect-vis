@@ -2,12 +2,12 @@
 <html ng-app="elect-vis">
 	<head>
 		<title>Federal Election Visualisations</title>
-	
+		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/bootstrap-theme.css">
 		<link rel="stylesheet" href="css/preference-flow.css">
-
+		
 		<!-- JS Libraries -->
 		<script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
@@ -18,6 +18,25 @@
 		<script type="text/javascript" src="js/elect-vis-diagrams.js"></script>
 	</head>
 	<body class="panel">
+		<header ng-controller="electorateCtrl">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/#">Home</a>
+				</div>
+				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					<ul class="nav navbar-nav">
+						<li class="dropdown" ng-class="{open: open}" ng-click="open=!open" ng-init="open=false">
+							<a href="" class="dropdown-toggle" data-toggle="dropdown">Electorates <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li ng-repeat="electorate in electorates">
+									<a href="#/electorate/{{electorate.name}}">{{ electorate.name }}</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
 		<section ng-view class="panel-body"></section>
 		<footer class="panel-footer">&copy; Kenni Bawden 2013</footer>
 	</body>
