@@ -12,3 +12,8 @@ preference-flow .flow:hover {
 	stroke: #C33;
 	opacity: 0.6;
 }
+
+preference-flow .threshold {
+	stroke: #222;
+	opacity: 0.8;
+}

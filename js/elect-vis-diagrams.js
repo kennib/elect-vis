@@ -20,7 +20,7 @@ electvisdiagrams.directive('diagram', function() {
 					h = vis[0][0].offsetHeight,
 					totalvotes = d3.sum(d3.values(data.rounds[0].candidates), function(p) { return p.votes; }),
 					gapratio = 0.7,
-					padding = 15,
+					padding = 0,
 					x = d3.scale.ordinal()
 						.domain(d3.range(data.rounds.length)) // number of rounds
 						.rangeBands([0, w + (w/(data.rounds.length-1))], gapratio),
@@ -33,8 +33,28 @@ electvisdiagrams.directive('diagram', function() {
 					// Map colors to candidates
 					var candidateColor = d3.scale.category10();
 					
+					// Seperate chart and overlays
+					var chart = vis.append('svg:g')
+						.attr('class', 'chart');
+					var overlays = vis.append('svg:g')
+						.attr('class', 'overlays');
+					
+					// 50% of votes line
+					var pc50 = overlays.append('svg:g');
+					pc50.append('svg:text')
+						.text('50%')
+						.attr('text-anchor', 'end')
+						.attr('x', w)
+						.attr('y', y(totalvotes/2));
+					pc50.append('svg:line')
+						.attr('class', 'threshold')
+						.attr('x1', 0)
+						.attr('x2', w)
+						.attr('y1', y(totalvotes/2))
+						.attr('y2', y(totalvotes/2));
+					
 					// Rounds
-					var rounds = vis.selectAll('g.round')
+					var rounds = chart.selectAll('g.round')
 						.data(data.rounds)
 							.enter().append('svg:g')
 								.attr('class', 'round')
