@@ -2,6 +2,10 @@ preference-flow svg {
 	height: 400px;
 }
 
+preference-flow .candidate .label {
+	fill: white;
+}
+
 preference-flow .flow {
 	fill: none;
 	stroke: #333;

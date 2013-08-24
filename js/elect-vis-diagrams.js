@@ -78,18 +78,29 @@ electvisdiagrams.directive('diagram', function() {
 							return candidates;
 						})
 							.enter().append('svg:g')
-								.attr('class', 'candidate');
+								.attr('class', 'candidate')
+								.attr('visibility', function(c) { return c.votes ? 'visible' : 'hidden'; });
 					
-					// candidate sankey bars
+					// Candidate sankey bars
 					candidates.append('svg:rect')
 						.attr('fill', function(candidate) { return candidateColor(candidate.id); })
-						.attr('y', function(candidate, i) {
-							return y(candidate.offset) + i * padding;
-						})
+						.attr('y', function(candidate, i) { return y(candidate.offset) + i*padding; })
 						.attr('width', x.rangeBand())
 						.attr('height', function(candidate) { return y(candidate.votes) })
 						.append('svg:title')
-							.text(function(candidate) { return candidate.id; });
+							.text(function(c) {
+								var cand = data.candidates[c.id];
+								return cand.partyAbbrv + "-" + cand.name + ' ' + c.votes + ' votes';
+							});
+					// Candidate labels
+					candidates.append('svg:text')
+						.attr('class', 'label')
+						.attr('y', function(candidate, i) { return y(candidate.offset+candidate.votes) + i*padding; })
+						.text(function(c) {
+							var c = data.candidates[c.id];
+							return c.partyAbbrv;
+						})
+						
 					
 					// The function to generate a preference flow
 					var flowLine = function() {
