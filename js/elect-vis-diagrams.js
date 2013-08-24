@@ -78,7 +78,10 @@ electvisdiagrams.directive('diagram', function() {
 							return candidates;
 						})
 							.enter().append('svg:g')
-								.attr('class', 'candidate')
+								.attr('class', function(c) {
+									var cand = data.candidates[c.id];
+									return 'candidate '+cand.partyAbbrv;
+								})
 								.attr('visibility', function(c) { return c.votes ? 'visible' : 'hidden'; });
 					
 					// Candidate sankey bars

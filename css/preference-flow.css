@@ -6,6 +6,11 @@ preference-flow .candidate .label {
 	fill: white;
 }
 
+preference-flow .candidate.ALP rect { fill: #E95D4E; }
+preference-flow .candidate.LP  rect { fill: #45A1DE; }
+preference-flow .candidate.NP  rect { fill: #F4A425; }
+preference-flow .candidate.GRN rect { fill: #59BC26; }
+
 preference-flow .flow {
 	fill: none;
 	stroke: #333;
