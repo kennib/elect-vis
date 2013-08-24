@@ -32,7 +32,8 @@ electvisdiagrams.directive('diagram', function() {
 					
 					// Map colors to candidates
 					var candidateColor = d3.scale.ordinal()
-						.range(["#2C3E50", "#E9662C", "#762AAC", "#AC876A", "#7591AC", "#52AC5E", "#AC72A2", "#068894", "#94261D", "#00AC65",]);
+						.domain(["ALP", "LP", "NP", "GRN"])
+						.range(["#E95D4E", "#45A1DE", "#F4A425", "#59BC26", "#2C3E50", "#E9662C", "#762AAC", "#AC876A", "#7591AC", "#52AC5E", "#AC72A2", "#068894", "#94261D", "#00AC65",]);
 					
 					// Seperate chart and overlays
 					var chart = vis.append('svg:g')
@@ -79,15 +80,15 @@ electvisdiagrams.directive('diagram', function() {
 							return candidates;
 						})
 							.enter().append('svg:g')
-								.attr('class', function(c) {
-									var cand = data.candidates[c.id];
-									return 'candidate '+cand.partyAbbrv;
-								})
+								.attr('class', 'candidate')
 								.attr('visibility', function(c) { return c.votes ? 'visible' : 'hidden'; });
 					
 					// Candidate sankey bars
 					candidates.append('svg:rect')
-						.attr('fill', function(candidate) { return candidateColor(candidate.id); })
+						.style('fill', function(candidate) {
+									var c = data.candidates[candidate.id];
+									return candidateColor(c.partyAbbrv);
+								})
 						.attr('y', function(candidate, i) { return y(candidate.offset) + i*padding; })
 						.attr('width', x.rangeBand())
 						.attr('height', function(candidate) { return y(candidate.votes) })
@@ -166,6 +167,10 @@ electvisdiagrams.directive('diagram', function() {
 							.enter().append('svg:path')
 								.attr('class', 'flow')
 								.style('stroke-width', function(flow) { return y(flow.size); })
+								.style('stroke', function(flow) {
+									var c = data.candidates[flow.source.id];
+									return candidateColor(c.partyAbbrv);
+								})
 								.attr('d', flowLine());
 				});
 			}
