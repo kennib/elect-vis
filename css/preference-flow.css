@@ -11,7 +11,7 @@ preference-flow .flow {
 	opacity: 0.3;
 }
 
-preference-flow .flow:hover {
+preference-flow .flow.highlight {
 	opacity: 0.8;
 }
 

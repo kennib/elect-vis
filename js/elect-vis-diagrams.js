@@ -80,7 +80,10 @@ electvisdiagrams.directive('diagram', function() {
 							return candidates;
 						})
 							.enter().append('svg:g')
-								.attr('class', 'candidate')
+								.attr('class', function(candidate) {
+									var c = data.candidates[candidate.id]
+									return 'candidate '+c.partyAbbrv;
+								})
 								.attr('visibility', function(c) { return c.votes ? 'visible' : 'hidden'; });
 					
 					// Candidate sankey bars
@@ -170,6 +173,14 @@ electvisdiagrams.directive('diagram', function() {
 								.style('stroke', function(flow) {
 									var c = data.candidates[flow.source.id];
 									return candidateColor(c.partyAbbrv);
+								})
+								.on('mouseover', function(flow) {
+									var c = data.candidates[flow.source.id];
+									d3.selectAll('.candidate.'+c.partyAbbrv+' .flow').attr('class', 'flow highlight');
+								})
+								.on('mouseout', function(flow) {
+									var c = data.candidates[flow.source.id];
+									d3.selectAll('.candidate.'+c.partyAbbrv+' .flow').attr('class', 'flow');
 								})
 								.attr('d', flowLine());
 				});
