@@ -10,7 +10,7 @@ electvisdiagrams.directive('diagram', function() {
 			var vis = d3.select(elem[0])
 				.append('svg:svg');
 			
-			/* A sankey diagram used for visualising party preferences */
+			/* A sankey diagram used for visualising candidate preferences */
 			if (attrs.type == "sankey") {
 				scope.$watch('data', function(data) {
 					if (data == undefined) return;
@@ -18,54 +18,54 @@ electvisdiagrams.directive('diagram', function() {
 					// Settings and scales
 					var w = vis[0][0].offsetWidth,
 					h = vis[0][0].offsetHeight,
-					totalvotes = d3.sum(d3.values(data[0].parties), function(p) { return p.votes; }),
+					totalvotes = d3.sum(d3.values(data.rounds[0].candidates), function(p) { return p.votes; }),
 					gapratio = 0.7,
 					padding = 15,
 					x = d3.scale.ordinal()
-						.domain(d3.range(data.length)) // number of rounds
-						.rangeBands([0, w + (w/(data.length-1))], gapratio),
+						.domain(d3.range(data.rounds.length)) // number of rounds
+						.rangeBands([0, w + (w/(data.rounds.length-1))], gapratio),
 					y = d3.scale.linear()
 						.domain([0, totalvotes]) // number of votes
-						.range([0, h - padding * d3.keys(data[0].parties).length]),
+						.range([0, h - padding * d3.keys(data.candidates).length]),
 					line = d3.svg.line()
 						.interpolate('basis');
 					
 					// Rounds
 					var rounds = vis.selectAll('g.round')
-						.data(data)
+						.data(data.rounds)
 							.enter().append('svg:g')
 								.attr('class', 'round')
 								.attr("transform", function(d, i) { return "translate(" + (x(i) - x(0)) + ",0)" });
 					
-					// Parties
-					var parties = rounds.selectAll('g.party')
+					// Candidates
+					var candidates = rounds.selectAll('g.candidate')
 						.data(function(round) {
-							var parties = d3.map(round.parties).values();
-							parties.sort(function(partyA,partyB) { return partyB.votes-partyA.votes; });
+							var candidates = d3.map(round.candidates).values();
+							candidates.sort(function(candidateA,candidateB) { return candidateB.votes-candidateA.votes; });
 							
 							var prev = 0;
 							var order = 0;
-							parties.forEach(function(party) {
-								party.previous = prev;
-								party.order = order;
-								prev += party.votes;
+							candidates.forEach(function(candidate) {
+								candidate.offset = prev;
+								candidate.order = order;
+								prev += candidate.votes;
 								order++;
 							});
-							return parties;
+							return candidates;
 						})
 							.enter().append('svg:g')
-								.attr('class', 'party');
+								.attr('class', 'candidate');
 					
-					// Party sankey bars
-					parties.append('svg:rect')
+					// candidate sankey bars
+					candidates.append('svg:rect')
 						.attr('fill', 'steelblue')
-						.attr('y', function(party, i) {
-							return y(party.previous) + i * padding;
+						.attr('y', function(candidate, i) {
+							return y(candidate.offset) + i * padding;
 						})
 						.attr('width', x.rangeBand())
-						.attr('height', function(party) { return y(party.votes) })
+						.attr('height', function(candidate) { return y(candidate.votes) })
 						.append('svg:title')
-							.text(function(party) { return party.name; });
+							.text(function(candidate) { return candidate.id; });
 					
 					// The function to generate a preference flow
 					var flowLine = function() {
@@ -75,11 +75,11 @@ electvisdiagrams.directive('diagram', function() {
 								gapWidth = x(0),
 								bandWidth = x.rangeBand() + gapWidth,
 								startx = x.rangeBand() - bandWidth,
-								sourcey = y(source.previous) + 
+								sourcey = y(source.offset) + 
 									source.order * padding +
 									y(flow.onset) +
 									y(flow.size)/2,
-								targety = y(target.previous) + 
+								targety = y(target.offset) + 
 									target.order * padding + 
 									y(flow.offset) +
 									y(flow.size)/2,
@@ -95,35 +95,36 @@ electvisdiagrams.directive('diagram', function() {
 					}
 					
 					// Flows
-					var flows = parties.selectAll('path.flow')
-						.data(function(party) {
-							if (party.round < 1) return []; // No flows for the first round
+					var flows = candidates.selectAll('path.flow')
+						.data(function(candidate) {
+							if (candidate.round < 1) return []; // No flows for the first round
 							
-							// Previous round of results
-							var round = data[party.round],
-								prev_round = data[party.round-1];
+							// offset round of results
+							var round = data.rounds[candidate.round],
+								prev_round = data.rounds[candidate.round-1];
 							
-							// Skip parties that have no preferences this round
-							if (party.votes == 0) return [];
+							// Skip candidates that have no preferences this round
+							if (candidate.votes == 0) return [];
 							
 							// Keep count of the offset of the transfer flow
-							var transferrer = prev_round.parties[round.transferrer];
-							if (transferrer.previous_transfers === undefined)
-								transferrer.previous_transfers = 0;
-							transferrer.previous_transfers += party.transfers;
+							
+							var transferrer = prev_round.candidates[round.transferrer];
+							if (transferrer.offset_transfers === undefined)
+								transferrer.offset_transfers = 0;
+							transferrer.offset_transfers += candidate.transfers;
 							
 							return [{
-								source: prev_round.parties[party.name],
-								target: party,
-								size: prev_round.parties[party.name].votes,
+								source: prev_round.candidates[candidate.id],
+								target: candidate,
+								size: prev_round.candidates[candidate.id].votes,
 								offset: 0,
 								onset: 0,
 							}, {
 								source: transferrer,
-								target: party,
-								size: party.transfers,
-								offset: prev_round.parties[party.name].votes,
-								onset: transferrer.previous_transfers - party.transfers,
+								target: candidate,
+								size: candidate.transfers,
+								offset: prev_round.candidates[candidate.id].votes,
+								onset: transferrer.offset_transfers - candidate.transfers,
 							}];
 						})
 							.enter().append('svg:path')

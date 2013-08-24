@@ -16,34 +16,48 @@ electorates = {}
 for pref in prefs:
     # Add a list of rounds for electorates not yet seen
     if pref['DivisionID'] not in electorates:
-        electorates[pref['DivisionID']] = []
+        electorates[pref['DivisionID']] = {
+            'rounds': [],
+            'candidates': {},
+        }
 
     # Get the electorate and round of voting
     electorate = electorates[pref['DivisionID']]
     round_number = int(pref["CountNumber"])
-
-    # Create/retrieve a round (a list of parties and preferences)
-    if len(electorate) <= round_number:
-        round = {
-            "parties": {},
-            "number": round_number,
+    
+    # Add the candidates' info
+    if round_number == 0:
+        electorate['candidates'][pref['CandidateID']] = {
+            "id": pref['CandidateID'],
+            "name": pref['GivenNm'] + " " + pref['Surname'],
+            "party": pref['PartyNm'],
+            "partyAbbrv": pref['PartyAb'],
+            "ballotPos": pref['BallotPosition'],
         }
-        electorate.append(round)
+    
+    # Create/retrieve a round (a list of candidates and votes)
+    if len(electorate['rounds']) <= round_number:
+        round = {
+            "candidates": {},
+        }
+        electorate['rounds'].append(round)
     else:
-        round = electorate[round_number]
+        round = electorate['rounds'][round_number]
 
     # Get the percentage of votes the party has this round
     if pref['CalculationType'] == 'Preference Count':
-        round['parties'][pref['PartyNm']] = {
-            "name": pref['PartyNm'],
+        round['candidates'][pref['CandidateID']] = {
+            "id": pref['CandidateID'],
             "votes": float(pref['CalculationValue']),
             "round": round_number,
         }
+    
+    # Get the votes transferred from the previous round
     if pref['CalculationType'] == 'Transfer Count':
-        round['parties'][pref['PartyNm']]['transfers'] = float(pref['CalculationValue'])
+        round['candidates'][pref['CandidateID']]['transfers'] = float(pref['CalculationValue'])
 
         if float(pref['CalculationValue'])< 0:
-            round['transferrer'] = pref['PartyNm']
+            round['transferrer'] = pref['CandidateID']
         
         
 # Write the results as JSON to a file
