@@ -30,6 +30,9 @@ electvisdiagrams.directive('diagram', function() {
 					line = d3.svg.line()
 						.interpolate('basis');
 					
+					// Map colors to candidates
+					var candidateColor = d3.scale.category10();
+					
 					// Rounds
 					var rounds = vis.selectAll('g.round')
 						.data(data.rounds)
@@ -58,7 +61,7 @@ electvisdiagrams.directive('diagram', function() {
 					
 					// candidate sankey bars
 					candidates.append('svg:rect')
-						.attr('fill', 'steelblue')
+						.attr('fill', function(candidate) { return candidateColor(candidate.id); })
 						.attr('y', function(candidate, i) {
 							return y(candidate.offset) + i * padding;
 						})
