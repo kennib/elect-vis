@@ -31,7 +31,8 @@ electvisdiagrams.directive('diagram', function() {
 						.interpolate('basis');
 					
 					// Map colors to candidates
-					var candidateColor = d3.scale.category10();
+					var candidateColor = d3.scale.ordinal()
+						.range(["#2C3E50", "#E9662C", "#762AAC", "#AC876A", "#7591AC", "#52AC5E", "#AC72A2", "#068894", "#94261D", "#00AC65",]);
 					
 					// Seperate chart and overlays
 					var chart = vis.append('svg:g')
