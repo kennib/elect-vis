@@ -1,7 +1,9 @@
 <h1 ng-show="electorate">{{ electorate.name }} - {{electorate.state}}</h1>
 <p ng-show="electorate">Statistics and visualisations</p>
 
-<preference-flow data="preferences[electorate.id]" name="electorate.name"></preference-flow>
+<section ng-show="electorate">
+	<preference-flow data="preferences[electorate.id]" name="electorate.name"></preference-flow>
+</section>
 
 <p ng-hide="electorate">Could not find an electorate called "{{ electorateName }}"</p>
 <p ng-hide="electorate">Did you mean one of the following electorates?</p>

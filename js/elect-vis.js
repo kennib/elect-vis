@@ -5,8 +5,9 @@ electvis.config(function($routeProvider) {
 	$routeProvider.
 		when('', {controller: pageCtrl, templateUrl: 'pages/home.html'}).
 		when('/electorate/:electorate', {controller: electorateCtrl, templateUrl: 'pages/electorate.html'}).
+		when('/electorates/:electorate', {redirectTo: '/electorate/:electorate'}).
 		when('/electorates', {controller: electorateCtrl, templateUrl: 'pages/electorates.html'}).
-		when('/electorate', {redirectTo: '/:year/electorates'})
+		when('/electorate', {redirectTo: '/electorates'})
 });
 
 /* Default static-ish page controller */
