@@ -106,19 +106,34 @@ electvisdiagrams.directive('diagram', function() {
 						.append('svg:title')
 							.text(function(c) {
 								var cand = data.candidates[c.id];
-								return cand.party + " - " + cand.name + ' ' + c.votes + ' votes';
+								return 'Preference ' + (c.round+1) + '\n' +
+									cand.party + " - " + cand.name + '\n' +
+									c.votes.toLocaleString() + ' votes';
 							});
 					// Candidate labels
-					candidates.append('svg:text')
+					var label = candidates.append('svg:text')
 						.attr('class', 'label')
 						.attr('y', function(candidate, i) { return y(candidate.offset+candidate.votes) + i*padding; })
 						.attr('x', x.rangeBand()/2)
-						.attr('text-anchor', 'middle')
-						.text(function(c) {
-							var c = data.candidates[c.id];
-							return c.partyAbbrv;
-						})
-						
+						.attr('text-anchor', 'middle');
+					
+					label.append('tspan')
+							.text(function(candidate) {
+								var c = data.candidates[candidate.id];
+								return c.partyAbbrv;
+							})
+						.append('tspan')
+							.text(function(candidate) {
+								return candidate.votes.toLocaleString();
+							})
+							.attr('x', x.rangeBand()/2)
+							.attr('dy', '-1em');
+					
+					label.attr('visibility', function(c) {
+						if (this.parentNode.getAttribute('visibility') == 'hidden') return 'hidden';
+						return (this.parentNode.getBBox().height > this.getBBox().height) ? 'visible' : 'hidden';
+					});
+					
 					
 					// The function to generate a preference flow
 					var flowLine = function() {
