@@ -204,10 +204,12 @@ electvisdiagrams.directive('diagram', function() {
 								.on('mouseover', function(flow) {
 									var c = data.candidates[flow.source.id];
 									d3.selectAll('.candidate.'+c.partyAbbrv+' .flow').attr('class', 'flow highlight');
+									d3.select(this).attr('class', 'flow highlight');
 								})
 								.on('mouseout', function(flow) {
 									var c = data.candidates[flow.source.id];
 									d3.selectAll('.candidate.'+c.partyAbbrv+' .flow').attr('class', 'flow');
+									d3.select(this).attr('class', 'flow');
 								})
 								.attr('d', flowLine());
 					
