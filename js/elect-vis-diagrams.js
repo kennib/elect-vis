@@ -218,7 +218,7 @@ electvisdiagrams.directive('diagram', function() {
 						.attr('class', 'label')
 						.attr('y', function(flow) { return y(flow.target.offset + flow.offset + flow.size/2); })
 						.attr('text-anchor', 'end')
-						.text(function(flow) { return flow.source.votes.toLocaleString(); });
+						.text(function(flow) { return flow.size.toLocaleString(); });
 				});
 			}
 		}
