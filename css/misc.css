@@ -3,3 +3,7 @@
 	-webkit-column-count: 6; /* Safari and Chrome */
 	column-count: 6;
 }
+
+.main-body {
+	padding: 20px;
+}

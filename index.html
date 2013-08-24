@@ -5,7 +5,7 @@
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/bootstrap.css">
-		<link rel="stylesheet" href="css/bootstrap-theme.css">
+		<!--<link rel="stylesheet" href="css/bootstrap-theme.css">-->
 		<link rel="stylesheet" href="css/preference-flow.css">
 		<link rel="stylesheet" href="css/misc.css">
 		
@@ -18,7 +18,7 @@
 		<script type="text/javascript" src="js/elect-vis-data.js"></script>
 		<script type="text/javascript" src="js/elect-vis-diagrams.js"></script>
 	</head>
-	<body class="panel">
+	<body>
 		<header ng-controller="electorateCtrl">
 			<nav class="navbar navbar-default" role="navigation">
 				<div class="navbar-header">
@@ -38,7 +38,13 @@
 				</div>
 			</nav>
 		</header>
-		<section ng-view class="panel-body"></section>
-		<footer class="panel-footer">&copy; Kenni Bawden 2013</footer>
+		
+		<section ng-view class="main-body"></section>
+		
+		<footer class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+			<div class="collapse navbar-collapse navbar-ex3-collapse">
+					<p class="navbar-text pull-right">&copy; Kenni Bawden 2013</p>
+			</div>
+		</footer>
 	</body>
 </html>
