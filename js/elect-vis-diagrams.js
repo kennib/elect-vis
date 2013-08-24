@@ -104,6 +104,8 @@ electvisdiagrams.directive('diagram', function() {
 					candidates.append('svg:text')
 						.attr('class', 'label')
 						.attr('y', function(candidate, i) { return y(candidate.offset+candidate.votes) + i*padding; })
+						.attr('x', x.rangeBand()/2)
+						.attr('text-anchor', 'middle')
 						.text(function(c) {
 							var c = data.candidates[c.id];
 							return c.partyAbbrv;
@@ -167,7 +169,9 @@ electvisdiagrams.directive('diagram', function() {
 								onset: transferrer.offset_transfers - candidate.transfers,
 							}];
 						})
-							.enter().append('svg:path')
+							.enter().append('svg:g');
+						
+						flows.append('svg:path')
 								.attr('class', 'flow')
 								.style('stroke-width', function(flow) { return y(flow.size); })
 								.style('stroke', function(flow) {
@@ -183,6 +187,13 @@ electvisdiagrams.directive('diagram', function() {
 									d3.selectAll('.candidate.'+c.partyAbbrv+' .flow').attr('class', 'flow');
 								})
 								.attr('d', flowLine());
+					
+					// Flow label
+					flows.insert('svg:text')
+						.attr('class', 'label')
+						.attr('y', function(flow) { return y(flow.target.offset + flow.offset + flow.size/2); })
+						.attr('text-anchor', 'end')
+						.text(function(flow) { return flow.source.votes.toLocaleString(); });
 				});
 			}
 		}
