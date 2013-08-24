@@ -50,6 +50,7 @@ electvisdiagrams.directive('diagram', function() {
 							var order = 0;
 							candidates.forEach(function(candidate) {
 								candidate.offset = prev;
+								candidate.offset_transfers = 0;
 								candidate.order = order;
 								prev += candidate.votes;
 								order++;
@@ -110,10 +111,7 @@ electvisdiagrams.directive('diagram', function() {
 							if (candidate.votes == 0) return [];
 							
 							// Keep count of the offset of the transfer flow
-							
 							var transferrer = prev_round.candidates[round.transferrer];
-							if (transferrer.offset_transfers === undefined)
-								transferrer.offset_transfers = 0;
 							transferrer.offset_transfers += candidate.transfers;
 							
 							return [{
