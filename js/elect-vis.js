@@ -1,4 +1,4 @@
-electvis = angular.module('elect-vis', ['elect-vis-data']);
+electvis = angular.module('elect-vis', ['elect-vis-data', 'elect-vis-diagrams']);
 
 
 electvis.config(function($routeProvider) {
@@ -15,8 +15,9 @@ function pageCtrl($scope) {
 
 /* Electorates data and visualisation controller */
 function electorateCtrl($scope, $routeParams,
-                        electorates) {
+                        electorates, preferences) {
 	$scope.electorates = electorates;
+	$scope.preferences = preferences;
 	
 	if ($routeParams.electorate)
 		$scope.electorateName = $routeParams.electorate;

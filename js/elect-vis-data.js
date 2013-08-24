@@ -5,3 +5,10 @@ electvisdata.factory('electorates', function($http) {
 		return response.data;
 	});
 });
+
+electvisdata.factory('preferences', function($http) {
+	return $http.get('data/preferences.json').then(function(response) {
+		return response.data;
+	});
+});
+

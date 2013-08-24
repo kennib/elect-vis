@@ -1,0 +1,14 @@
+preference-flow svg {
+	height: 400px;
+}
+
+preference-flow .flow {
+	fill: none;
+	stroke: #333;
+	opacity: 0.3;
+}
+
+preference-flow .flow:hover {
+	stroke: #C33;
+	opacity: 0.6;
+}
