@@ -1,11 +1,14 @@
-<h1 ng-show="electorate">{{ electorate.name }} - {{electorate.state}}</h1>
-<p ng-show="electorate">Statistics and visualisations</p>
+<div ng-show="electorate" class="page-header">
+	<h1>{{ electorate.name }} <small>{{electorate.state}}</small></h1>
+	<p>Statistics and visualisations for the electorate of {{electorate.name }}</p>
+</div>
 
 <section ng-show="electorate">
 	<preference-flow data="preferences[electorate.id]" name="electorate.name"></preference-flow>
 </section>
 
-<p ng-hide="electorate">Could not find an electorate called "{{ electorateName }}"</p>
-<p ng-hide="electorate">Did you mean one of the following electorates?</p>
-<ng-include ng-hide="electorate" src="'pages/electorates.html'">
-</ng-include>
+<div ng-hide="electorate" ng-cloak>
+	<p class="alert alert-warning">Could not find an electorate called "{{ electorateName }}"</p>
+	<p>Did you mean one of the following electorates?</p>
+	<ng-include ng-hide="electorate" src="'pages/electorates.html'"></ng-include>
+</div>

@@ -25,6 +25,10 @@ function electorateCtrl($scope, $routeParams,
 	else
 		$scope.electorateName = '';
 	$scope.electorateName = $scope.electorateName.capitalize();
+	
+	// By default pretend an electorate is available
+	$scope.electorate = {};
+	
 	// Watch for async electorates
 	$scope.$watch('electorates', function(electorates) {
 		if (electorates)
