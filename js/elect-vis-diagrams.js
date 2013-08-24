@@ -90,7 +90,7 @@ electvisdiagrams.directive('diagram', function() {
 						.append('svg:title')
 							.text(function(c) {
 								var cand = data.candidates[c.id];
-								return cand.partyAbbrv + "-" + cand.name + ' ' + c.votes + ' votes';
+								return cand.party + " - " + cand.name + ' ' + c.votes + ' votes';
 							});
 					// Candidate labels
 					candidates.append('svg:text')
