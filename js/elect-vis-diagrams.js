@@ -95,6 +95,14 @@ electvisdiagrams.directive('diagram', function() {
 						.attr('y', function(candidate, i) { return y(candidate.offset) + i*padding; })
 						.attr('width', x.rangeBand())
 						.attr('height', function(candidate) { return y(candidate.votes) })
+						.on('mouseover', function(candidate) {
+									var c = data.candidates[candidate.id];
+									d3.selectAll('.candidate.'+c.partyAbbrv+' .flow').attr('class', 'flow highlight');
+								})
+								.on('mouseout', function(candidate) {
+									var c = data.candidates[candidate.id];
+									d3.selectAll('.candidate.'+c.partyAbbrv+' .flow').attr('class', 'flow');
+								})
 						.append('svg:title')
 							.text(function(c) {
 								var cand = data.candidates[c.id];
