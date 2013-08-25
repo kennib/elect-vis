@@ -42,6 +42,12 @@
 		<section ng-view class="main-body"></section>
 		
 		<footer ng-controller="footerCtrl" role="navigation">
+			<ol class="breadcrumb">
+				<li ng-repeat="crumb in breadcrumbs" ng-hide="$last">
+					<a ng-href="#{{ breadcrumbs.slice(0,$index+1).join('/') }}">{{ crumb }}</a>
+				</li>
+				<li class="active">{{ breadcrumbs[breadcrumbs.length-1] }}</li>
+			</ol>
 		</footer>
 	</body>
 </html>
