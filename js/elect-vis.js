@@ -14,6 +14,20 @@ electvis.config(function($routeProvider) {
 function pageCtrl($scope) {
 }
 
+
+/* Controller for the header */
+function headerCtrl($scope,
+                    electorates) {
+	$scope.electorates = electorates;
+}
+
+/* Controller for the footer */
+function footerCtrl($scope, $location) {
+	$scope.$on('$locationChangeSuccess', function(){
+		$scope.breadcrumbs = $location.path().split('/');
+	});
+}
+
 /* Electorates data and visualisation controller */
 function electorateCtrl($scope, $routeParams,
                         electorates, preferences) {
