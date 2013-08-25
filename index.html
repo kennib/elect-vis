@@ -26,14 +26,7 @@
 				</div>
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav">
-						<li class="dropdown" ng-class="{open: open}" ng-click="open=!open" ng-init="open=false">
-							<a href="" class="dropdown-toggle" data-toggle="dropdown">Electorates <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li ng-repeat="electorate in electorates">
-									<a href="#/electorate/{{electorate.name}}">{{ electorate.name }}</a>
-								</li>
-							</ul>
-						</li>
+						<li><a href="#/electorates">Electorates</a></li>
 					</ul>
 				</div>
 			</nav>
