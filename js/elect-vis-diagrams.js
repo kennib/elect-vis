@@ -42,7 +42,8 @@ electvisdiagrams.directive('diagram', function() {
 						.attr('class', 'overlays');
 					
 					// 50% of votes line
-					var pc50 = overlays.append('svg:g');
+					var pc50 = overlays.append('svg:g')
+						.attr('id', 'percent-50');
 					pc50.append('svg:text')
 						.text('50%')
 						.attr('text-anchor', 'end')
@@ -113,20 +114,19 @@ electvisdiagrams.directive('diagram', function() {
 					// Candidate labels
 					var label = candidates.append('svg:text')
 						.attr('class', 'label')
-						.attr('y', function(candidate, i) { return y(candidate.offset+candidate.votes) + i*padding; })
-						.attr('x', x.rangeBand()/2)
-						.attr('text-anchor', 'middle');
+						.attr('y', function(candidate, i) { return y(candidate.offset+candidate.votes) + i*padding - 2; });
 					
-					label.append('tspan')
+					label.append('svg:tspan')
 							.text(function(candidate) {
 								var c = data.candidates[candidate.id];
 								return c.partyAbbrv;
 							})
-						.append('tspan')
+							.attr('x', '0.1em')
+						.append('svg:tspan')
 							.text(function(candidate) {
 								return candidate.votes.toLocaleString();
 							})
-							.attr('x', x.rangeBand()/2)
+							.attr('x', '0.1em')
 							.attr('dy', '-1em');
 					
 					label.attr('visibility', function(c) {
@@ -195,30 +195,70 @@ electvisdiagrams.directive('diagram', function() {
 							.enter().append('svg:g');
 						
 						flows.append('svg:path')
-								.attr('class', 'flow')
-								.style('stroke-width', function(flow) { return y(flow.size); })
-								.style('stroke', function(flow) {
-									var c = data.candidates[flow.source.id];
-									return candidateColor(c.partyAbbrv);
-								})
-								.on('mouseover', function(flow) {
-									var c = data.candidates[flow.source.id];
-									d3.selectAll('.candidate.'+c.partyAbbrv+' .flow').attr('class', 'flow highlight');
-									d3.select(this).attr('class', 'flow highlight');
-								})
-								.on('mouseout', function(flow) {
-									var c = data.candidates[flow.source.id];
-									d3.selectAll('.candidate.'+c.partyAbbrv+' .flow').attr('class', 'flow');
-									d3.select(this).attr('class', 'flow');
-								})
-								.attr('d', flowLine());
+							.attr('class', 'flow')
+							.style('stroke-width', function(flow) { return y(flow.size); })
+							.style('stroke', function(flow) {
+								var c = data.candidates[flow.source.id];
+								return candidateColor(c.partyAbbrv);
+							})
+							.on('mouseover', function(flow) {
+								var c = data.candidates[flow.source.id];
+								d3.selectAll('.candidate.'+c.partyAbbrv+' .flow').attr('class', 'flow highlight');
+								d3.select(this).attr('class', 'flow highlight');
+							})
+							.on('mouseout', function(flow) {
+								var c = data.candidates[flow.source.id];
+								d3.selectAll('.candidate.'+c.partyAbbrv+' .flow').attr('class', 'flow');
+								d3.select(this).attr('class', 'flow');
+							})
+							.attr('d', flowLine());
 					
 					// Flow label
-					flows.insert('svg:text')
+					flows.append('svg:text')
 						.attr('class', 'label')
 						.attr('y', function(flow) { return y(flow.target.offset + flow.offset + flow.size/2); })
 						.attr('text-anchor', 'end')
 						.text(function(flow) { return flow.size.toLocaleString(); });
+					
+					// Update on screen resize
+					var oldresize = window.onresize;
+					window.onresize = function() {
+						// Recalculate
+						w = vis[0][0].offsetWidth,
+						h = vis[0][0].offsetHeight,
+						totalvotes = d3.sum(d3.values(data.rounds[0].candidates), function(p) { return p.votes; }),
+						gapratio = 0.7,
+						padding = 0,
+						x = d3.scale.ordinal()
+							.domain(d3.range(data.rounds.length)) // number of rounds
+							.rangeBands([0, w + (w/(data.rounds.length-1))], gapratio),
+						y = d3.scale.linear()
+							.domain([0, totalvotes]) // number of votes
+							.range([0, h - padding * d3.keys(data.candidates).length]),
+						line = d3.svg.line()
+							.interpolate('basis');
+						
+						// Resize
+						rounds
+							.attr("transform", function(d, i) { return "translate(" + (x(i) - x(0)) + ",0)" });
+						flows.selectAll('path')
+							.attr('d', flowLine());
+						candidates.selectAll('rect')
+							.attr('y', function(candidate, i) { return y(candidate.offset) + i*padding; })
+							.attr('width', x.rangeBand())
+							.attr('height', function(candidate) { return y(candidate.votes) });
+						pc50.selectAll('text')
+							.attr('x', w)
+							.attr('y', y(totalvotes/2));
+						pc50.selectAll('line')
+							.attr('x2', w)
+							.attr('y1', y(totalvotes/2))
+							.attr('y2', y(totalvotes/2));
+						
+						// Call old function
+						if (oldresize)
+							oldresize();
+					};
 				});
 			}
 		}
