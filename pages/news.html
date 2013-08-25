@@ -1,0 +1,7 @@
+<h2>News</h2>
+
+<article class="panel panel-default" ng-repeat="article in articles">
+	<div class="panel-heading">{{ article.title }} <span class="pull-right">{{ article.date }}</span></div>
+	<div class="panel-body" ng-bind-html="article.body"></div>
+	<div ng-include="article.body"></div>
+</article>

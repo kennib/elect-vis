@@ -14,7 +14,6 @@ electvis.config(function($routeProvider) {
 function pageCtrl($scope) {
 }
 
-
 /* Controller for the header */
 function headerCtrl($scope,
                     electorates) {
@@ -27,6 +26,14 @@ function footerCtrl($scope, $location) {
 		$scope.breadcrumbs = $location.path().split('/');
 	});
 }
+
+/* Controller for the new section */
+function newsCtrl($scope, news) {
+	// Load articles
+	news.then(function(news) {
+		$scope.articles = news.articles;
+	});
+};
 
 /* Electorates data and visualisation controller */
 function electorateCtrl($scope, $routeParams,

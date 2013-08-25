@@ -1,0 +1,14 @@
+{
+	"articles": [
+		{
+			"date": "25/08/2013",
+			"title": "Preference flow diagrams",
+			"body": "news/pref-flow.html"
+		},
+		{
+			"date": "25/08/2013",
+			"title": "What is this site about?",
+			"body": "news/about.html"
+		}
+	]
+}
