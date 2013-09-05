@@ -7,7 +7,8 @@ electvis.config(function($routeProvider) {
 		when('/electorate/:electorate', {controller: electorateCtrl, templateUrl: 'pages/electorate.html'}).
 		when('/electorates/:electorate', {redirectTo: '/electorate/:electorate'}).
 		when('/electorates', {controller: electorateCtrl, templateUrl: 'pages/electorates.html'}).
-		when('/electorate', {redirectTo: '/electorates'})
+		when('/electorate', {redirectTo: '/electorates'}).
+		when('/map', {controller: mapCtrl, templateUrl: 'pages/map.html'})
 });
 
 /* Default static-ish page controller */
@@ -34,6 +35,38 @@ function newsCtrl($scope, news) {
 		$scope.articles = news.articles;
 	});
 };
+
+/* Controller for the map */
+function mapCtrl($scope) {
+	// Create the map
+	var map = new google.maps.Map(document.getElementById('map'), {
+		center: new google.maps.LatLng(-25.641526, 132.964783),
+		zoom: 4,
+		zoomControl: true,
+		zoomControlOptions: {
+			style: google.maps.ZoomControlStyle.SMALL,
+			position: google.maps.ControlPosition.RIGHT_TOP
+		},
+		mapTypeControl: false,
+		panControl: false,
+		streetViewControl: false,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	});
+	console.log(document.getElementById('map'), map);
+	var layer = new google.maps.FusionTablesLayer({
+      map: map,
+      heatmap: { enabled: false },
+      query: {
+        select: "col3",
+        from: "1KxmDttJs8iLccWZwOjw5yofSkvYpOXd5iILRCKY",
+        where: ""
+      },
+      options: {
+        styleId: 2,
+        templateId: 2
+      }
+    });
+}
 
 /* Electorates data and visualisation controller */
 function electorateCtrl($scope, $routeParams,
