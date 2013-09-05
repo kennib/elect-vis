@@ -16,4 +16,5 @@ footer {
 
 .main-body {
 	padding: 20px;
+	margin-bottom: 80px; /* to account for the footer */
 }
