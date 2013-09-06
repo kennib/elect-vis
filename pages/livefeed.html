@@ -10,13 +10,19 @@
 
 <ul>
   <li ng-repeat="electorate in electorates">
-    <h2>{{electorate.name}}</h2>
-    <section>
-      <h3>Two Candidate Preferred</h3>
-        {{ livedata.twocandidate[electorate.id] }}  
-      <h3>First Preferences</h3>
-        {{ livedata.firstpreferences[electorate.id] }}  
+    <article>
+      <h2>{{electorate.name}}</h2>
 
-    </section>
+      <section>
+        <h3>Two Candidate Preferred</h3>
+          {{ livedata.twocandidate[electorate.id] }} 
+          <barchart data="livedata.twocandidate[electorate.id].candidates" value="'votes'"></barchart>
+      </section>
+
+      <section>
+        <h3>First Preferences</h3>
+          {{ livedata.firstpreferences[electorate.id] }}  
+      </section>
+    </article>
   </li>
 </ul>

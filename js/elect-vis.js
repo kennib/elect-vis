@@ -62,6 +62,7 @@ function electorateCtrl($scope, $routeParams,
 /* Live feed for use on election night */
 function liveCtrl($scope, $timeout,
                   electorates, yearData) {
+  window.scope = $scope;
   var year =  2010; // Mock live data from 2010
 
   $scope.electorates = electorates;

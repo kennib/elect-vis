@@ -1,5 +1,19 @@
 electvisdiagrams = angular.module('elect-vis-diagrams', []);
 
+electvisdiagrams.directive('barchart', function() {
+	return {
+		restrict: "E",
+    templateUrl: "pages/barchart.html",
+		scope: {
+			data: "=data",
+      value: "=value",
+      totalValue: "=total",
+		},
+		link: function(scope, elem, attrs) {
+    },
+  };
+});
+
 electvisdiagrams.directive('diagram', function() {
 	return {
 		restrict: "E",

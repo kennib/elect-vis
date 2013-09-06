@@ -1,0 +1,4 @@
+<div class="progress">
+  <div ng-repeat="d in data" class="progress-bar progress-bar-{{['danger', 'info'][$index]}}"
+    style="width: {{d[value] | percent:(data|sum:value)}}%"></div>
+</div>
