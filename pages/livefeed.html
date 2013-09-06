@@ -27,6 +27,12 @@
       <section>
         <h3>First Preferences</h3>
           {{ livedata.firstpreferences[electorate.id] }}  
+          <div class="progress">
+            <div ng-repeat="(candidate,votes) in livedata.firstpreferences[electorate.id].votes"
+              class="progress-bar"
+              style="width: {{ votes | percent:livedata.firstpreferences[electorate.id].formal }}%;
+              background-color: {{ livedata.parties[livedata.candidates[candidate].party_id].shortname | partyColor }}"></div>
+          </div>
       </section>
     </article>
   </li>
