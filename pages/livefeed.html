@@ -15,21 +15,31 @@
 
       <section>
         <h3>Two Candidate Preferred</h3>
-          <div class="progress">
-            <div ng-repeat="candidate in livedata.twocandidate[electorate.id].candidates"
-              class="progress-bar"
-              style="width: {{ candidate.votes | percent:livedata.firstpreferences[electorate.id].formal }}%;
-              background-color: {{ livedata.parties[livedata.candidates[candidate.candidate_id].party_id].shortname | partyColor }}"></div>
+          <div class="well">
+            <div class="progress">
+              <div ng-repeat="candidate in livedata.twocandidate[electorate.id].candidates"
+                class="progress-bar"
+                style="width: {{ candidate.votes | percent:livedata.firstpreferences[electorate.id].formal }}%;
+                background-color: {{ livedata.parties[livedata.candidates[candidate.candidate_id].party_id].shortname | partyColor }}"></div>
+            </div>
+            <span ng-repeat="(id,candidate) in livedata.twocandidate[electorate.id].candidates"
+              ng-class="{'pull-left': $index==0, 'pull-right': $index==1}">
+              {{ livedata.parties[livedata.candidates[id].party_id].shortname }} - {{ livedata.candidates[id].name }}
+              {{ candidate.votes | number }} votes
+              {{ candidate.votes | percent:livedata.firstpreferences[electorate.id].formal | number:1}}%
+            </span>
           </div>
       </section>
 
       <section>
         <h3>First Preferences</h3>
-          <div class="progress">
-            <div ng-repeat="(candidate,votes) in livedata.firstpreferences[electorate.id].votes"
-              class="progress-bar"
-              style="width: {{ votes | percent:livedata.firstpreferences[electorate.id].formal }}%;
-              background-color: {{ livedata.parties[livedata.candidates[candidate].party_id].shortname | partyColor }}"></div>
+          <div class="well">
+            <div class="progress">
+              <div ng-repeat="(candidate,votes) in livedata.firstpreferences[electorate.id].votes"
+                class="progress-bar"
+                style="width: {{ votes | percent:livedata.firstpreferences[electorate.id].formal }}%;
+                background-color: {{ livedata.parties[livedata.candidates[candidate].party_id].shortname | partyColor }}"></div>
+            </div>
           </div>
       </section>
     </article>
