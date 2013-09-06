@@ -19,3 +19,10 @@ electvisfilters.filter('sum', function() {
     return sum;
   }
 });
+
+// Map party IDs to colours
+electvisfilters.filter('partyColor', function() {
+  return d3.scale.ordinal()
+						.domain(["ALP", "LP", "NP", "GRN"])
+						.range(["#E95D4E", "#45A1DE", "#F4A425", "#59BC26", "#2C3E50", "#E9662C", "#762AAC", "#AC876A", "#7591AC", "#52AC5E", "#AC72A2", "#068894", "#94261D", "#00AC65",]);
+});

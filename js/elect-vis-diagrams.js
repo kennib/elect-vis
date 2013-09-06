@@ -6,10 +6,20 @@ electvisdiagrams.directive('barchart', function() {
     templateUrl: "pages/barchart.html",
 		scope: {
 			data: "=data",
-      value: "=value",
+      value: "&value",
       totalValue: "=total",
+      color: "&color",
 		},
 		link: function(scope, elem, attrs) {
+      // Calculate total if not given
+      if (!scope.total) {
+        scope.$watch('data', function(d) {
+          scope.total = 0;
+          angular.forEach(scope.data, function(d) {
+            scope.total = scope.total + scope.value({datum: d});
+          });
+        });
+      }
     },
   };
 });

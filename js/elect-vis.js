@@ -85,5 +85,6 @@ function liveCtrl($scope, $timeout,
     refresh = $timeout($scope.updateData, refreshPeriod);
   };
 
-  var refresh = $timeout($scope.updateData, refreshPeriod);
+  var refresh;
+  $scope.updateData();
 };

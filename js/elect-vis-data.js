@@ -14,7 +14,7 @@ electvisdata.factory('githubData', function($http) {
 electvisdata.factory('yearData', function(githubData) {
   return function (year) {
     var data = {};
-    var datasets = ['candidates', 'twocandidate', 'firstpreferences', 'electorates'];
+    var datasets = ['candidates', 'twocandidate', 'firstpreferences', 'electorates', 'parties'];
     angular.forEach(datasets, function(set) {
       data[set] = githubData('data/'+year+'/'+set);
     });

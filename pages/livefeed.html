@@ -16,7 +16,12 @@
       <section>
         <h3>Two Candidate Preferred</h3>
           {{ livedata.twocandidate[electorate.id] }} 
-          <barchart data="livedata.twocandidate[electorate.id].candidates" value="'votes'"></barchart>
+          <div class="progress">
+            <div ng-repeat="candidate in livedata.twocandidate[electorate.id].candidates"
+              class="progress-bar"
+              style="width: {{ candidate.votes | percent:livedata.firstpreferences[electorate.id].formal }}%;
+              background-color: {{ livedata.parties[livedata.candidates[candidate.candidate_id].party_id].shortname | partyColor }}"></div>
+          </div>
       </section>
 
       <section>
