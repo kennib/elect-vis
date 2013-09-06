@@ -60,7 +60,29 @@ function electorateCtrl($scope, $routeParams,
 }
 
 /* Live feed for use on election night */
-function liveCtrl($scope, electorates, yearData) {
+function liveCtrl($scope, $timeout,
+                  electorates, yearData) {
+  var year =  2010; // Mock live data from 2010
+
   $scope.electorates = electorates;
-  $scope.livedata = yearData(2010); // Mock live data from 2010
+  $scope.livedata = yearData(year);
+
+  // Auto updater
+  $scope.updatePeriod = 2*60*1000; // Update data every two minutes
+  var refreshPeriod = 1000; // Update refresh meter every second
+  $scope.lastUpdate = Date.now();
+  $scope.untilNextUpdate = $scope.updatePeriod;
+  
+  $scope.updateData = function() {
+    // Do an update
+    if ($scope.lastUpdate + $scope.updatePeriod < Date.now()) {
+      $scope.livedata = yearData(year);
+      $scope.lastUpdate = Date.now();
+    };
+
+    $scope.untilNextUpdate = ($scope.lastUpdate + $scope.updatePeriod) - Date.now();
+    refresh = $timeout($scope.updateData, refreshPeriod);
+  };
+
+  var refresh = $timeout($scope.updateData, refreshPeriod);
 };
