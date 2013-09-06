@@ -17,16 +17,17 @@
         <h3>Two Candidate Preferred</h3>
           <div class="well">
             <div class="progress">
-              <div ng-repeat="candidate in livedata.twocandidate[electorate.id].candidates"
+              <div ng-repeat="cand in livedata.twocandidate[electorate.id].candidates | orderBy:'votes':'reverse'"
                 class="progress-bar"
-                style="width: {{ candidate.votes | percent:livedata.firstpreferences[electorate.id].formal }}%;
-                background-color: {{ livedata.parties[livedata.candidates[candidate.candidate_id].party_id].shortname | partyColor }}"></div>
+                style="width: {{ cand.votes | percent:livedata.firstpreferences[electorate.id].formal }}%;
+                background-color: {{ livedata.parties[livedata.candidates[cand.candidate_id].party_id].shortname | partyColor }}"></div>
             </div>
-            <span ng-repeat="(id,candidate) in livedata.twocandidate[electorate.id].candidates"
+            <span ng-repeat="cand in livedata.twocandidate[electorate.id].candidates"
               ng-class="{'pull-left': $index==0, 'pull-right': $index==1}">
-              {{ livedata.parties[livedata.candidates[id].party_id].shortname }} - {{ livedata.candidates[id].name }}
-              {{ candidate.votes | number }} votes
-              {{ candidate.votes | percent:livedata.firstpreferences[electorate.id].formal | number:1}}%
+              {{ livedata.parties[livedata.candidates[cand.candidate_id].party_id].shortname }} -
+              {{ livedata.candidates[cand.candidate_id].name }}
+              {{ cand.votes | number }} votes
+              {{ cand.votes | percent:livedata.firstpreferences[electorate.id].formal | number:1}}%
             </span>
           </div>
       </section>
@@ -35,12 +36,19 @@
         <h3>First Preferences</h3>
           <div class="well">
             <div class="progress">
-              <div ng-repeat="(candidate,votes) in livedata.firstpreferences[electorate.id].votes"
+              <div ng-repeat="cand in livedata.firstpreferences[electorate.id].candidates | orderBy:'votes':'reverse'"
                 class="progress-bar"
-                style="width: {{ votes | percent:livedata.firstpreferences[electorate.id].formal }}%;
-                background-color: {{ livedata.parties[livedata.candidates[candidate].party_id].shortname | partyColor }}"></div>
+                style="width: {{ cand.votes | percent:livedata.firstpreferences[electorate.id].formal }}%;
+                background-color: {{ livedata.parties[livedata.candidates[cand.candidate_id].party_id].shortname | partyColor }}"></div>
             </div>
           </div>
+          <ol>
+            <li ng-repeat="cand in livedata.firstpreferences[electorate.id].candidates | orderBy:'votes':'reverse'">
+              {{ livedata.parties[livedata.candidates[cand.candidate_id].party_id].name }} -
+              {{ livedata.candidates[cand.candidate_id].name }} -
+              {{ cand.votes | number }} votes
+            </li>
+          </ol>
       </section>
     </article>
   </li>
