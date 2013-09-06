@@ -3,13 +3,14 @@ electvis = angular.module('elect-vis', ['elect-vis-data', 'elect-vis-diagrams', 
 
 electvis.config(function($routeProvider) {
 	$routeProvider.
-		when('', {controller: pageCtrl, templateUrl: 'pages/home.html'}).
+		when('/home', {controller: pageCtrl, templateUrl: 'pages/home.html'}).
 		when('/electorate/:electorate', {controller: electorateCtrl, templateUrl: 'pages/electorate.html'}).
 		when('/electorates/:electorate', {redirectTo: '/electorate/:electorate'}).
 		when('/electorates', {controller: electorateCtrl, templateUrl: 'pages/electorates.html'}).
 		when('/electorate', {redirectTo: '/electorates'}).
     when('/livefeed', {controller: liveCtrl, templateUrl: 'pages/livefeed.html'}).
-    when('/live', {redirectTo: '/livefeed'})
+    when('/live', {redirectTo: '/livefeed'}).
+    otherwise({redirectTo: '/livefeed'});
 });
 
 /* Default static-ish page controller */
