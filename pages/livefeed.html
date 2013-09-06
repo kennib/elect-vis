@@ -22,7 +22,7 @@
                 style="width: {{ cand.votes | percent:livedata.firstpreferences[electorate.id].formal }}%;
                 background-color: {{ livedata.parties[livedata.candidates[cand.candidate_id].party_id].shortname | partyColor }}"></div>
             </div>
-            <span ng-repeat="cand in livedata.twocandidate[electorate.id].candidates"
+            <span ng-repeat="cand in livedata.twocandidate[electorate.id].candidates | orderBy:'votes':'reverse'"
               ng-class="{'pull-left': $index==0, 'pull-right': $index==1}">
               {{ livedata.parties[livedata.candidates[cand.candidate_id].party_id].shortname }} -
               {{ livedata.candidates[cand.candidate_id].name }}
