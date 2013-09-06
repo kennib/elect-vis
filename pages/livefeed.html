@@ -1,5 +1,13 @@
 <h1>Live Feed</h1>
-<div>{{ untilNextUpdate/1000 }} seconds until next update</div>
+<div class="well">
+  <div class="progress progress-striped">
+    <span class="progress-bar progress-bar-info" role="progressbar"
+    aria-valuenow="{{ untilNextUpdate| percent:updatePeriod }}" aria-valuemin="0" aria-valuemax="100"
+    style="width: {{ untilNextUpdate| percent:updatePeriod }}%"></span>
+  </div>
+  <div>{{ untilNextUpdate/1000 }} seconds until next update</div>
+</div>
+
 <ul>
   <li ng-repeat="electorate in electorates">
     <h2>{{electorate.name}}</h2>

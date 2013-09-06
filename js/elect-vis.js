@@ -1,4 +1,4 @@
-electvis = angular.module('elect-vis', ['elect-vis-data', 'elect-vis-diagrams']);
+electvis = angular.module('elect-vis', ['elect-vis-data', 'elect-vis-diagrams', 'elect-vis-filters']);
 
 
 electvis.config(function($routeProvider) {
