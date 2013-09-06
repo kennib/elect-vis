@@ -5,7 +5,7 @@
     aria-valuenow="{{ untilNextUpdate| percent:updatePeriod }}" aria-valuemin="0" aria-valuemax="100"
     style="width: {{ untilNextUpdate| percent:updatePeriod }}%"></span>
   </div>
-  <div>{{ untilNextUpdate/1000 }} seconds until next update</div>
+  <div>{{ untilNextUpdate/1000 | number:0 }} seconds until next update</div>
 </div>
 
 <ul>
