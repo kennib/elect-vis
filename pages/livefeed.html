@@ -15,7 +15,6 @@
 
       <section>
         <h3>Two Candidate Preferred</h3>
-          {{ livedata.twocandidate[electorate.id] }} 
           <div class="progress">
             <div ng-repeat="candidate in livedata.twocandidate[electorate.id].candidates"
               class="progress-bar"
@@ -26,7 +25,6 @@
 
       <section>
         <h3>First Preferences</h3>
-          {{ livedata.firstpreferences[electorate.id] }}  
           <div class="progress">
             <div ng-repeat="(candidate,votes) in livedata.firstpreferences[electorate.id].votes"
               class="progress-bar"
