@@ -1,0 +1,13 @@
+<h1>Live Feed</h1>
+<ul>
+  <li ng-repeat="electorate in electorates">
+    <h2>{{electorate.name}}</h2>
+    <section>
+      <h3>Two Candidate Preferred</h3>
+        {{ livedata.twocandidate[electorate.id] }}  
+      <h3>First Preferences</h3>
+        {{ livedata.firstpreferences[electorate.id] }}  
+
+    </section>
+  </li>
+</ul>

@@ -7,7 +7,9 @@ electvis.config(function($routeProvider) {
 		when('/electorate/:electorate', {controller: electorateCtrl, templateUrl: 'pages/electorate.html'}).
 		when('/electorates/:electorate', {redirectTo: '/electorate/:electorate'}).
 		when('/electorates', {controller: electorateCtrl, templateUrl: 'pages/electorates.html'}).
-		when('/electorate', {redirectTo: '/electorates'})
+		when('/electorate', {redirectTo: '/electorates'}).
+    when('/livefeed', {controller: liveCtrl, templateUrl: 'pages/livefeed.html'}).
+    when('/live', {redirectTo: '/livefeed'})
 });
 
 /* Default static-ish page controller */
@@ -56,3 +58,9 @@ function electorateCtrl($scope, $routeParams,
 			$scope.electorate = electorates[$scope.electorateName];
 	});
 }
+
+/* Live feed for use on election night */
+function liveCtrl($scope, electorates, yearData) {
+  $scope.electorates = electorates;
+  $scope.livedata = yearData(2010); // Mock live data from 2010
+};
