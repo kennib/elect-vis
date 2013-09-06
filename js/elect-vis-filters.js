@@ -20,6 +20,15 @@ electvisfilters.filter('sum', function() {
   }
 });
 
+electvisfilters.filter('default', function() {
+  return function(value, defaultValue) {
+    if (value === undefined || value === null)
+      return defaultValue;
+    else
+      return value;
+  };
+})
+
 // Map party IDs to colours
 electvisfilters.filter('partyColor', function() {
   return d3.scale.ordinal()
