@@ -1,7 +1,7 @@
 electvisdata = angular.module('elect-vis-data', []);
 
 electvisdata.factory('githubData', function($http) {
-  var githubUrl = 'http://rawgithub.com/kennib/elect-data/master';
+  var githubUrl = 'http://kennib.webfactional.com/elect-data';
   delete $http.defaults.headers.common['X-Requested-With'];
 
   return function(file) {
@@ -14,7 +14,7 @@ electvisdata.factory('githubData', function($http) {
 electvisdata.factory('yearData', function(githubData) {
   return function (year) {
     var data = {};
-    var datasets = ['candidates', 'twocandidate', 'firstpreferences', 'electorates', 'parties'];
+    var datasets = ['candidates', 'twocandidate', 'firstpreferences', 'parties'];
     angular.forEach(datasets, function(set) {
       data[set] = githubData('data/'+year+'/'+set);
     });
