@@ -24,7 +24,7 @@
   <li ng-repeat="electorate in electorates | filterObj:search">
     <article>
       <h2>{{electorate.name}}</h2>
-
+      <p>{{ livedata.firstpreferences[electorate.id].formal | number }} formal votes counted.</p>
       <section>
         <h3>Two Candidate Preferred</h3>
           <div class="well">
