@@ -64,7 +64,13 @@ function electorateCtrl($scope, $routeParams,
 function liveCtrl($scope, $timeout,
                   electorates, yearData) {
   window.scope = $scope;
-  var year =  2010; // Mock live data from 2010
+  if (Date.now() > new Date("September 7 2013 16:00:00")) {
+    var year = 2013;
+    $scope.live = true;
+  } else {
+    var year =  2010; // Mock live data from 2010
+    $scope.live = false;
+  }
 
   $scope.electorates = electorates;
   $scope.livedata = yearData(year);
@@ -78,8 +84,11 @@ function liveCtrl($scope, $timeout,
   $scope.updateData = function() {
     // Do an update
     if ($scope.lastUpdate + $scope.updatePeriod < Date.now()) {
-      if (Date.now() > new Date("September 7 2013 16:00:00"))
+      if (Date.now() > new Date("September 7 2013 16:00:00")) {
+        year = 2013;
         $scope.livedata = yearData(year);
+        $scope.live = true;
+      }
       $scope.lastUpdate = Date.now();
     };
 
