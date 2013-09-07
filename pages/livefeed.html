@@ -30,7 +30,7 @@
           <div class="well">
             <div class="progress">
               <div ng-repeat="cand in livedata.twocandidate[electorate.id].candidates | orderBy:'votes':'reverse'"
-                class="progress-bar" title="{{ livedata.parties[livedata.candidates[cand.candidate_id].party_id].shortname }} - {{ cand.votes | percent:livedata.firstpreferences[electorate.id].formal | number:1}}%"
+                ng-class="{'progress-bar': 1, 'pull-right': $index==1}" title="{{ livedata.parties[livedata.candidates[cand.candidate_id].party_id].shortname }} - {{ cand.votes | percent:livedata.firstpreferences[electorate.id].formal | number:1}}%"
                 style="width: {{ cand.votes | percent:livedata.firstpreferences[electorate.id].formal }}%;
                 background-color: {{ livedata.parties[livedata.candidates[cand.candidate_id].party_id].shortname | partyColor }}"></div>
             </div>
