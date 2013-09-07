@@ -77,8 +77,9 @@ function liveCtrl($scope, $timeout,
   
   $scope.updateData = function() {
     // Do an update
-    if ($scope.lastUpdate + $scope.updatePeriod < Date.now() && Date.now() > new Date("September 7 2013 16:00:00")) {
-      $scope.livedata = yearData(year);
+    if ($scope.lastUpdate + $scope.updatePeriod < Date.now()) {
+      if (Date.now() > new Date("September 7 2013 16:00:00"))
+        $scope.livedata = yearData(year);
       $scope.lastUpdate = Date.now();
     };
 
