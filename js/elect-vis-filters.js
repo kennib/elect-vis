@@ -35,3 +35,13 @@ electvisfilters.filter('partyColor', function() {
 						.domain(["ALP", "LP", "NP", "GRN"])
 						.range(["#E95D4E", "#45A1DE", "#F4A425", "#59BC26", "#2C3E50", "#E9662C", "#762AAC", "#AC876A", "#7591AC", "#52AC5E", "#AC72A2", "#068894", "#94261D", "#00AC65",]);
 });
+
+electvisfilters.filter('filterObj', function($filter) {
+  return function(obj, query) {
+    var array = [];
+    for(key in obj) {
+        array.push(obj[key]);
+    }
+    return $filter('filter')(array, query);
+  }
+});

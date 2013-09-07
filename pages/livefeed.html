@@ -3,16 +3,25 @@
   These are the results from 2010. 2013 Results will be displayed from 4pm AEST
 </div>
 <div class="well">
-  <div class="progress progress-striped">
-    <span class="progress-bar progress-bar-info" role="progressbar"
-    aria-valuenow="{{ untilNextUpdate| percent:updatePeriod }}" aria-valuemin="0" aria-valuemax="100"
-    style="width: {{ untilNextUpdate| percent:updatePeriod }}%"></span>
+  <div class="row">
+    <div class="progress progress-striped col-lg-10 col-sm-8 col-xs-7">
+      <span class="progress-bar progress-bar-info" role="progressbar"
+      aria-valuenow="{{ untilNextUpdate| percent:updatePeriod }}" aria-valuemin="0" aria-valuemax="100"
+      style="width: {{ untilNextUpdate| percent:updatePeriod }}%"></span>
+    </div>
+    <div class="col-lg-2 col-sm-4 col-xs-5">{{ untilNextUpdate/1000 | number:0 }} seconds until next update</div>
   </div>
-  <div>{{ untilNextUpdate/1000 | number:0 }} seconds until next update</div>
+  <div>
+    <div class="input-group">
+      <span class="input-group-addon">Search for an electorate</span>
+      <input type="search" ng-model="search"
+        class="form-control" placeholder="Elecorate name or State abbreviation"></input>
+    </div>
+  </div>
 </div>
 
 <ul>
-  <li ng-repeat="electorate in electorates">
+  <li ng-repeat="electorate in electorates | filterObj:search">
     <article>
       <h2>{{electorate.name}}</h2>
 
